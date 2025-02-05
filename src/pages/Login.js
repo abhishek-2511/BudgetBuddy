@@ -14,7 +14,7 @@ const Login = () => {
     const handleSubmit = (e)=>{
         e.preventDefault();
         console.log("Login Done");
-        navigate("/register")
+        navigate("/")
     }
 
   return (

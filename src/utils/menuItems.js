@@ -9,20 +9,20 @@ export const menuItems = [
   },
   {
     id: 2,
-    title: "View Transactions",
+    title: "ViewTransactions",
     icon: Transactions,
     link: "/transaction",
   },
   {
     id: 3,
-    title: "Incomes",
+    title: "Income",
     icon: incomes,
     link: "/income",
   },
   {
     id: 4,
-    title: "expenses",
-    icon: transfer,
+    title: "Expenses",
+    icon: expense,
     link: "/expense",
   },
 ];
