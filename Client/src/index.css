@@ -254,3 +254,64 @@ code {
     align-content: end;
   }
 }
+
+
+/***************************Dashboard******************************/
+
+.dashboard-container{
+  padding: 0 1rem;
+  .dashboard-content{
+    padding-top: 1rem;
+    display: flex;
+    justify-content: space-around;
+    .chart-content{
+      height: 70%;
+      width: 60%;
+    }
+    .total-card{
+      margin-bottom: 2rem;
+      padding: 0.2rem 1.4rem;
+      border: 2px solid #fff ;
+      width: 15rem;
+      border-radius: 2rem;
+      h3{
+        font-size: 1.4rem;
+      }
+      p{
+        font-size: 1.6rem;
+      }
+    }
+  }
+}
+
+
+
+/************************All Transactions********************************/
+.transactions-container{
+  padding: 0 1rem;
+  .transactions-content{
+    padding-top: 1rem;
+    display: flex;
+    justify-content: space-around;
+    .total-card{
+      margin-bottom: 2rem;
+      padding: 0.2rem 1.4rem;
+      border: 2px solid #fff ;
+      width: 15rem;
+      border-radius: 2rem;
+      h3{
+        font-size: 1.4rem;
+      }
+      p{
+        font-size: 1.6rem;
+      }
+    }
+  }
+}
+
+
+/*********************************Chart*******************************/
+.chart-container{
+  height: 100%;
+  width: 100%;
+}
