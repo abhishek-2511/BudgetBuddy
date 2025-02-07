@@ -1,10 +1,14 @@
 import React from 'react'
 import Cards from './Cards'
 
-const Report = () => {
+const Report = ({cardData}) => {
   return (
-    <div>
-        <Cards />
+    <div className='report-container'>
+        {cardData.map((value,index)=>{
+          return(
+            <Cards value={value}/>
+          )
+        })}
     </div>
   )
 }

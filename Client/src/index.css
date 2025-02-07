@@ -315,3 +315,12 @@ code {
   height: 100%;
   width: 100%;
 }
+
+
+/**********************************Report***********************************/
+
+.report-container{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}

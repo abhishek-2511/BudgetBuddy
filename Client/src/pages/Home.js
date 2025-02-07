@@ -11,19 +11,23 @@ import ViewTransactions from "../component/ViewTransactions";
 const Home = () => {
   const navigate = useNavigate();
   const [selectItem, setSelectItem] = useState("Dashboard");
+  const [Name,setName] = useState(null)
 
-//   useEffect(()=>{
-//       var user = localStorage.getItem("user");
-//       if(!user){
-//           navigate("/login");
-//       }
-//   },[])
+  useEffect(()=>{
+      var user = JSON.parse(localStorage.getItem("user"));
+      if(!user){
+          navigate("/login");
+          return;
+      }
+      setName(user.username);
+  },[])
   var Component = "DashBoard";
   useEffect(() => {
     Component = selectItem;
   }, [selectItem]);
 
   const handleSignOut = ()=>{
+    localStorage.removeItem("user");
     navigate('/login');
   }
 
@@ -33,7 +37,7 @@ const Home = () => {
         <div>
           <div className="profile">
             <span className="logo">{user}</span>
-            <div>profile</div>
+            {Name !== null ? Name : <div>profile</div>}
           </div>
           <div className="items">
             <SideBar selectItem={selectItem} setSelectItem={setSelectItem} />

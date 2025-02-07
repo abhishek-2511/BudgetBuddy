@@ -1,28 +1,30 @@
 import React from "react";
 import { Delete, Transactions } from "../utils/icons";
 
-const Cards = () => {
+const Cards = ({value}) => {
+
+  console.log(value,"Carddata")
   return (
     <div className="card">
       <div className="card-logo">{Transactions}</div>
-      <section className="card-content">
+      <div className="card-content">
         <div>
-          <span>Freelance</span>
+          <span>{value.title}</span>
         </div>
         <div className="card-details">
           <div className="amount">
-            <span>$ 1200</span>
+            <span>$ {value.amount}</span>
           </div>
           <div className="date">
             {Transactions}
-            <span>12/12/2003</span>
+            <span>{value.date}</span>
           </div>
           <div className="card-income">
             {Transactions}
-            <span>Freelancing Salary</span>
+            <span>{value.description}</span>
           </div>
         </div>
-      </section>
+      </div>
       <div className="delete">
         {Delete}
       </div>

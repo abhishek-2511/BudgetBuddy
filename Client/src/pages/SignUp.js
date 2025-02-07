@@ -20,35 +20,35 @@ const SignUp = () => {
             if(handleValidation()){
                 // console.log("inside validation");
                 const {username,email,password} = RegisterData;
-                // const {data} = await axios.post('http://localhost:8000/api/register',{
-                //     username,
-                //     email,
-                //     password
-                // });
-                // navigate("/login");
+                const {data} = await axios.post('http://localhost:8081/user/register',{
+                    username,
+                    email,
+                    password
+                });
+                navigate("/login");
                 // console.log("Data",data);
 
-                // if(data.status === false){
-                //     toast.error(data.msg,{
-                //         position:'top-right',
-                //         draggable:true,
-                //         autoClose:5000,
-                //         pauseOnHover:true
-                //     })
-                // }
-                // else if(data.status === true){
-                //     toast.success(data.msg,{
-                //         position:'top-right',
-                //         autoClose:5000,
-                //         draggable:true,
-                //         pauseOnHover:true
-                //     })
-                //     setRegisterData({username:'',email:'',password:'',confirmPassword:''})
+                if(data.status === false){
+                    toast.error(data.msg,{
+                        position:'top-right',
+                        draggable:true,
+                        autoClose:5000,
+                        pauseOnHover:true
+                    })
+                }
+                else if(data.status === true){
+                    toast.success(data.msg,{
+                        position:'top-right',
+                        autoClose:5000,
+                        draggable:true,
+                        pauseOnHover:true
+                    })
+                    setRegisterData({username:'',email:'',password:'',confirmPassword:''})
 
-                //     setTimeout(()=>{
-                //         navigate('/');
-                //     },2000);
-                // }
+                    setTimeout(()=>{
+                        navigate('/');
+                    },2000);
+                }
             }
         } catch (error) {
             console.log(error);
