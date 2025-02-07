@@ -19,7 +19,7 @@ public class IncomeService {
         return incomeRepository.save(income);
     }
     
-    public List<Income> getIncomeByUser(String userId) {
+    public List<Income> getIncomeByUserId(String userId) {
         return incomeRepository.findByUserId(userId);
     }
     

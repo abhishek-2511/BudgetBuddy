@@ -46,6 +46,15 @@ public class ExpenseController {
 		}
 		return ResponseEntity.notFound().build();
 	} 
+	
+	@GetMapping("/get-expensesByUserId/{userId}")
+	public ResponseEntity<List<Expense>> getExpensesByUserId(@PathVariable String userId){
+		List<Expense> expense = expenseService.getExpensesByUserId(userId);
+		if(expense != null) {
+			return ResponseEntity.ok(expense);
+		}
+		return ResponseEntity.notFound().build();
+	} 
  	
 	@PostMapping("/add-expense")
 	public ResponseEntity<Expense> addExpense(@RequestBody @Valid Expense expense){
