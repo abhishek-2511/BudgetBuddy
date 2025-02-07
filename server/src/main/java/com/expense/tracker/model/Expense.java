@@ -11,10 +11,8 @@ public class Expense {
     
     @Id
     private String id;
-    
 
     @NotBlank(message = "Title cannot be blank")
-    @NotNull(message = "Title cannot be null")
     private String title;
     
     @NotNull(message = "Amount cannot be null")
@@ -33,11 +31,14 @@ public class Expense {
     @NotNull(message = "Description cannot be null")
     @Size(max = 255, message = "Description cannot be longer than 255 characters")
     private String description;
+    
+    @NotBlank(message = "User ID cannot be blank")
+    private String userId; // Reference to Users
 
 	public String getId() {
 		return id;
 	}
-
+ 
 	public void setId(String id) {
 		this.id = id;
 	}
@@ -82,5 +83,14 @@ public class Expense {
 		this.description = description;
 	}
 
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	
 	
 }

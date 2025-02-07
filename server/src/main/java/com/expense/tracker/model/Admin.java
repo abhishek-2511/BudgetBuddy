@@ -5,9 +5,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 
-@Document(collection = "users")
+@Document(collection = "admin")
 @CrossOrigin
-public class Users {
+public class Admin {
 
 	@Id
 	private String id;
@@ -15,11 +15,11 @@ public class Users {
 	private String email;
 	private String password;
 	
-	public Users() {
+	public Admin() {
 		super();
 	}
 
-	public Users(String id, String username, String email, String password) {
+	public Admin(String id, String username, String email, String password) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -64,9 +64,5 @@ public class Users {
 	public String toString() {
 		return "Users [id=" + id + ", username=" + username + ", email=" + email + ", password=" + password + "]";
 	}
-
-
-	
-	
 
 }

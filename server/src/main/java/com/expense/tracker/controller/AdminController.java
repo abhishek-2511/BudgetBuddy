@@ -12,25 +12,44 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.expense.tracker.model.Admin;
 import com.expense.tracker.model.Users;
+import com.expense.tracker.service.AdminService;
+import com.expense.tracker.service.ExpenseService;
+import com.expense.tracker.service.IncomeService;
 import com.expense.tracker.service.UserService;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/admin")
 @CrossOrigin
-public class UserController {
+public class AdminController {
 	
 	@Autowired
 	private UserService userService;
 	
+	@Autowired
+	private AdminService adminService;
+	
+	@Autowired
+	private IncomeService incomeService;
+	
+	@Autowired
+	private ExpenseService expenseService;
+	
 	@PostMapping("/register")
-	public ResponseEntity<?> register(@RequestBody Users user) {
-		return userService.register(user);
+	public ResponseEntity<?> register(@RequestBody Admin admin) {
+		return adminService.register(admin);
 	}
 	
 	@GetMapping("/get-allUsers")
 	public List<Users> displayAllUsers() {
 		return userService.getAllUsers();
+	}
+	
+	
+	@GetMapping("/get-allAdmin")
+	public List<Admin> getAllAdmin() {
+		return adminService.getAllAdmin();
 	}
 	
 	@GetMapping("/getById/{id}")
@@ -44,13 +63,28 @@ public class UserController {
 	}
 	
 	@PostMapping("/login")
-	public ResponseEntity<?> login(@RequestBody Users user) {
+	public ResponseEntity<?> login(@RequestBody Admin admin) {
 
-		return userService.login(user);
+		return adminService.login(admin);
 	}
 	
 	@PostMapping("/forgotPassword")
-	public ResponseEntity<?> forgotPassword(@RequestBody Users user){
-		return userService.forgotPassword(user);
+	public ResponseEntity<?> forgotPassword(@RequestBody Admin admin){
+		return adminService.forgotPassword(admin);
+	}
+	
+	@GetMapping("/getTotalExpenses")
+	public Double totalExpenses() {
+		return expenseService.getTotalExpenses();
+	}
+	
+	@GetMapping("/getTotalIncome")
+	public Double totalIncome() {
+		return incomeService.getTotalIncome();
+	}
+	
+	@GetMapping("/getAllExpensesAndIncomes")
+	public List<Object> getAllExpensesAndIncomes() {
+		return adminService.getAllExpensesAndIncomes();
 	}
 }
