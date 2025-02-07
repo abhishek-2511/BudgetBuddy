@@ -35,54 +35,66 @@ public class AdminController {
 	
 	@Autowired
 	private ExpenseService expenseService;
-	
+
+	//post mapping for registration
 	@PostMapping("/register")
-	public ResponseEntity<?> register(@RequestBody Admin admin) {
+	public ResponseEntity<?> signUp(@RequestBody Admin admin) {
 		return adminService.register(admin);
 	}
 	
+        //Get Mapping for display all users
 	@GetMapping("/get-allUsers")
 	public List<Users> displayAllUsers() {
 		return userService.getAllUsers();
 	}
 	
-	
+	//Get Mapping for display all admins
 	@GetMapping("/get-allAdmin")
 	public List<Admin> getAllAdmin() {
 		return adminService.getAllAdmin();
 	}
 	
+
+        //Get User By Id
 	@GetMapping("/getById/{id}")
 	public Users getUserById(@PathVariable String id ) {
 		return userService.getUserById(id);
 	}
 	
-	@GetMapping("/getByUsername/{username}")
+
+        //Get User Details By Username
+	@GetMapping("/getUserByUsername/{username}")
 	public Users getByUsername(@PathVariable String username ) {
 		return userService.getByUsername(username);
 	}
 	
+        //Post Mapping for login
 	@PostMapping("/login")
-	public ResponseEntity<?> login(@RequestBody Admin admin) {
-
+	public ResponseEntity<?> signIn(@RequestBody Admin admin) {
 		return adminService.login(admin);
 	}
 	
+
+      	//Post mapping for forgot password
 	@PostMapping("/forgotPassword")
-	public ResponseEntity<?> forgotPassword(@RequestBody Admin admin){
+	public ResponseEntity<?> resetPassword(@RequestBody Admin admin){
 		return adminService.forgotPassword(admin);
 	}
 	
+ 	//Get mapping for display total expenses
 	@GetMapping("/getTotalExpenses")
-	public Double totalExpenses() {
+	public Double getTotalExpenses() {
 		return expenseService.getTotalExpenses();
 	}
+
 	
+	//Get Mapping for display total income
 	@GetMapping("/getTotalIncome")
-	public Double totalIncome() {
+	public Double getTotalIncomes() {
 		return incomeService.getTotalIncome();
 	}
 	
+	//Get mapping for display All expenses and incomes
 	@GetMapping("/getAllExpensesAndIncomes")
 	public List<Object> getAllExpensesAndIncomes() {
 		return adminService.getAllExpensesAndIncomes();
