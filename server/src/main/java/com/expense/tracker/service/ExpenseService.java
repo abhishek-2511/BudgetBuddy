@@ -19,7 +19,7 @@ public class ExpenseService {
 		return expenseRepository.save(expense);
 	}
 	
-    public List<Expense> getExpensesByUser(String userId) {
+    public List<Expense> getExpensesByUserId(String userId) {
         return expenseRepository.findByUserId(userId);
     }
 

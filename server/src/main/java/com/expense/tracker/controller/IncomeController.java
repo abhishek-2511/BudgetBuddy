@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.expense.tracker.model.Expense;
 import com.expense.tracker.model.Income;
 import com.expense.tracker.service.IncomeService;
 
@@ -46,6 +47,15 @@ public class IncomeController {
 		}
 		return ResponseEntity.notFound().build();
     }
+    
+	@GetMapping("/get-incomeByUserId/{userId}")
+	public ResponseEntity<List<Income>> getExpensesByUser(@PathVariable String userId){
+		List<Income> income = incomeService.getIncomeByUserId(userId);
+		if(income != null) {
+			return ResponseEntity.ok(income);
+		}
+		return ResponseEntity.notFound().build();
+	} 
     
     @PostMapping("/add-income")
     public ResponseEntity<Income> addIncome(@RequestBody @Valid Income income){
