@@ -28,19 +28,19 @@ const ViewTransactions = () => {
         <div>
           <div className="total-card">
             <h3>Total Income</h3>
-            <p>
+            <p style={{ color: "green" }}>
               {rupee} {income}
             </p>
           </div>
-          <div className="total-card">
+          <div className="total-card" >
             <h3>Total Expense</h3>
-            <p>
+            <p style={{ color: "red" }}>
               {rupee} {expense}
             </p>
           </div>
-          <div className="total-card">
+          <div className="total-card" >
             <h3>Total Balance</h3>
-            <p>
+            <p style={{ color: "#79adcc" }}>
               {rupee} {total}
             </p>
           </div>

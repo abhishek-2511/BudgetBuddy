@@ -63,7 +63,7 @@ const Income = () => {
       <h1 className="heading">Incomes</h1>
       <div className="display-amount">
         <span className="inner-heading">Total Income:</span>
-        <span className="income-amount">{rupee} {income}</span>
+        <span className="income-amount" style={{ color: "green" }}>{rupee} {income}</span>
       </div>
       <section className="form-and-display">
         <div className="form">
