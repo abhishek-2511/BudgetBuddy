@@ -1,7 +1,5 @@
 package com.expense.tracker.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -38,20 +36,12 @@ public class UserController {
 		return userService.register(user);
 	}
 	
-	@GetMapping("/get-allUsers")
-	public List<Users> displayAllUsers() {
-		return userService.getAllUsers();
-	}
 	
 	@GetMapping("/getById/{id}")
 	public Users getUserById(@PathVariable String id ) {
 		return userService.getUserById(id);
 	}
 	
-	@GetMapping("/getByUsername/{username}")
-	public Users getByUsername(@PathVariable String username ) {
-		return userService.getByUsername(username);
-	}
 	
 	@DeleteMapping("/deleteExpenseOrIncomeById/{id}")
 	public ResponseEntity<Expense> deleteExpense(@PathVariable String id){
@@ -66,8 +56,5 @@ public class UserController {
 		return userService.login(user);
 	}
 	
-	@PostMapping("/forgotPassword")
-	public ResponseEntity<?> forgotPassword(@RequestBody Users user){
-		return userService.forgotPassword(user);
-	}
+
 }
