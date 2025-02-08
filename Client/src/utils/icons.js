@@ -13,3 +13,4 @@ export const banktransfer = <i className="fa-solid fa-building-columns"></i>
 export const youtube = <i className="fa-brands fa-youtube"></i>
 export const other = <i className="fa-brands fa-squarespace"></i>
 export const Delete = <i className="fa-solid fa-trash"></i>
+export const rupee = <i className="fa-solid fa-indian-rupee-sign" style={{fontWeight:"50px", fontSize:"1.5rem"}}></i>

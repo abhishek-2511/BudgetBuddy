@@ -2,13 +2,22 @@ import React, { useEffect, useState } from "react";
 import Form from "./Form";
 import Report from "./Report";
 import axios from "axios";
+import { rupee } from "../utils/icons";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { setIncome } from "../store/IncomeSlice";
 
 const Income = () => {
+
+  const dispatch = useDispatch();
+
+  const income = useSelector((state)=>state.manager.Income)
 
   const [Data,setData] = useState({title:'',amount:0,date:'',category:'',description:''})
   const [userId,setUserId] = useState('');
   const [cardData, setCardData] = useState([]);
   const [toggle,setToggle] = useState(true);
+  const [cardId,setCardId] = useState("")
 
   const handleSubmit = async(e)=>{
     e.preventDefault();
@@ -19,7 +28,7 @@ const Income = () => {
       const response = await axios.post("http://localhost:8081/income/add-income",{
         title,amount,date,category,description,userId
       });
-      console.log(response,"responseData");
+      // console.log(response,"responseData");
     }catch(err){
       console.log(err);
     }
@@ -29,7 +38,7 @@ const Income = () => {
       date: "",
       category: "",
       description: ""})
-    console.log("data submitted");
+    // console.log("data submitted");
   }
 
   useEffect(()=>{
@@ -37,18 +46,16 @@ const Income = () => {
     setUserId(user.id)
     const fetch = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:8081/income/get-all-incomes"
-        );
-        // console.log(response);
+        const response = await axios.get(`http://localhost:8081/income/get-incomeByUserId/${user.id}`);
         setCardData(response.data);
+        dispatch(setIncome(response.data));
       } catch (err) {
         console.log(err);
       }
     };
 
     fetch();
-  },[toggle])
+  },[toggle,cardId])
 
 
   return (
@@ -56,7 +63,7 @@ const Income = () => {
       <h1 className="heading">Incomes</h1>
       <div className="display-amount">
         <span className="inner-heading">Total Income:</span>
-        <span className="income-amount">$7400</span>
+        <span className="income-amount">{rupee} {income}</span>
       </div>
       <section className="form-and-display">
         <div className="form">
@@ -66,7 +73,7 @@ const Income = () => {
           </form>
         </div>
         <div className="work">
-        {toggle && <Report cardData={cardData}/>}
+        {toggle && <Report cardData={cardData} setCardId={setCardId}/>}
         </div>
       </section>
     </div>

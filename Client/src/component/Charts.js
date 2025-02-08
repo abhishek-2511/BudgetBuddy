@@ -11,6 +11,7 @@ import {Chart as ChartJs,
 } from 'chart.js'
 
 import {Line} from 'react-chartjs-2'
+import { useSelector } from 'react-redux'
 
 ChartJs.register(
     CategoryScale,
@@ -25,17 +26,21 @@ ChartJs.register(
 
 const Charts = () => {
 
+    const incomes = useSelector((state)=>state.manager.incomes);
+    const expenses = useSelector((state)=>state.manager.expenses);
+    console.log(expenses.map(value => value.amount));
+
     const data = {
-        labels:["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        labels:incomes.map(value => value.date),
         datasets:[
             {
                 labels:"incomes",
-                data:[2000,3000,100,23000,14000,1200,5000],
+                data:incomes.map(value => value.amount),
                 borderColor: "green"
             },
             {
                 labels:"expenses",
-                data:[1000,200,5000,600,1200,900,700],
+                data:expenses.map(value => value.amount),
                 borderColor: "red"
             }
         ]

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,7 +13,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.expense.tracker.model.Expense;
 import com.expense.tracker.model.Users;
+import com.expense.tracker.service.ExpenseService;
+import com.expense.tracker.service.IncomeService;
 import com.expense.tracker.service.UserService;
 
 @RestController
@@ -22,6 +26,12 @@ public class UserController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private ExpenseService expenseService;
+	
+	@Autowired
+	private IncomeService incomeService;
 	
 	@PostMapping("/register")
 	public ResponseEntity<?> register(@RequestBody Users user) {
@@ -41,6 +51,13 @@ public class UserController {
 	@GetMapping("/getByUsername/{username}")
 	public Users getByUsername(@PathVariable String username ) {
 		return userService.getByUsername(username);
+	}
+	
+	@DeleteMapping("/deleteExpenseOrIncomeById/{id}")
+	public ResponseEntity<Expense> deleteExpense(@PathVariable String id){
+		expenseService.removeExpense(id);
+		incomeService.removeIncome(id);
+		return ResponseEntity.ok().build(); 
 	}
 	
 	@PostMapping("/login")

@@ -3,10 +3,8 @@ import React from 'react'
 const Form = ({Data,setData}) => {
 
   const handleChange =  (e)=>{
-    // console.log(e)
     setData({...Data,[e.target.name]:e.target.value});
   }
-  // title,amount,date,category,description
   return (
     <div className='form-container'>
         <input 

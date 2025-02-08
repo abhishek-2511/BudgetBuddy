@@ -15,10 +15,8 @@ const SignUp = () => {
     }
 
     const handleSubmit = async (e)=>{
-        // e.preventDefault();
         try {
             if(handleValidation()){
-                // console.log("inside validation");
                 const {username,email,password} = RegisterData;
                 const {data} = await axios.post('http://localhost:8081/user/register',{
                     username,
@@ -26,9 +24,8 @@ const SignUp = () => {
                     password
                 });
                 navigate("/login");
-                // console.log("Data",data);
 
-                if(data.status === false){
+                if(data.status === 400){
                     toast.error(data.msg,{
                         position:'top-right',
                         draggable:true,
@@ -51,7 +48,12 @@ const SignUp = () => {
                 }
             }
         } catch (error) {
-            console.log(error);
+            toast.error(error.response.data,{
+                position:'top-right',
+                draggable:true,
+                autoClose:5000,
+                pauseOnHover:true
+            })
         }
     }
 

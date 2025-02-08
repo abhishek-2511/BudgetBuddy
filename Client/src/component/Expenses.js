@@ -2,8 +2,17 @@ import React, { useEffect, useState } from "react";
 import Form from "./Form";
 import Report from "./Report";
 import axios from "axios";
+import { rupee } from "../utils/icons";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { setExpense } from "../store/IncomeSlice";
 
 const Expenses = () => {
+
+  const dispatch = useDispatch();
+
+  const expense = useSelector((state)=>state.manager.Expense)
+
   const [Data, setData] = useState({
     title: "",
     amount: 0,
@@ -14,6 +23,7 @@ const Expenses = () => {
   const [userId, setUserId] = useState("");
   const [cardData, setCardData] = useState([]);
   const [toggle,setToggle] = useState(true);
+  const [cardId,setCardId] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -52,24 +62,25 @@ const Expenses = () => {
     const fetch = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8081/expense/get-all-expenses"
+          `http://localhost:8081/expense/get-expensesByUserId/${user.id}`
         );
         // console.log(response);
         setCardData(response.data);
+        dispatch(setExpense(response.data));
       } catch (err) {
         console.log(err);
       }
     };
 
     fetch();
-  }, [toggle]);
+  }, [toggle,cardId]);
 
   return (
     <div className="IncomeExpenseContainer">
       <h1 className="heading">Expenses</h1>
       <div className="display-amount">
         <span className="inner-heading">Total Income:</span>
-        <span className="expense-amount">$7400</span>
+        <span className="expense-amount">{rupee} {expense}</span>
       </div>
       <section className="form-and-display">
         <div className="form">
@@ -81,7 +92,7 @@ const Expenses = () => {
           </form>
         </div>
         <div className="work">
-          {toggle && <Report cardData={cardData}/>}
+          {toggle && <Report cardData={cardData} setCardId={setCardId}/>}
         </div>
       </section>
     </div>
