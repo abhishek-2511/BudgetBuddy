@@ -79,7 +79,7 @@ const Expenses = () => {
     <div className="IncomeExpenseContainer">
       <h1 className="heading">Expenses</h1>
       <div className="display-amount">
-        <span className="inner-heading">Total Income:</span>
+        <span className="inner-heading">Total Expense :</span>
         <span className="expense-amount">{rupee} {expense}</span>
       </div>
       <section className="form-and-display">

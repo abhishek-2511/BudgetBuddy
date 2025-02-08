@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router";
 import Logo from "../utils/logo.webp";
 import axios from "axios";
-import {ToastContainer,toast} from 'react-toastify'
+import { ToastContainer, toast } from 'react-toastify'
 
 const Login = () => {
   const navigate = useNavigate();
@@ -20,11 +20,11 @@ const Login = () => {
         username: loginData.username,
         password: loginData.password,
       });
-    //   console.log(response);
-      localStorage.setItem("user",JSON.stringify(response.data));
+      //   console.log(response);
+      localStorage.setItem("user", JSON.stringify(response.data));
       navigate("/");
     } catch (err) {
-    //   console.log(err.response.data, "error");
+      //   console.log(err.response.data, "error");
       toast.error(err.response.data, {
         position: "top-right",
         autoClose: 5000,
@@ -36,6 +36,10 @@ const Login = () => {
 
   return (
     <div className="formContainer" onSubmit={handleSubmit}>
+      <div className="formWrapper">
+        <h1>An Expense Tracker App</h1>
+        <p>Managing finances has never been easier</p>
+      </div>
       <form>
         <div className="heading">
           <img src={Logo} alt="Logo" />

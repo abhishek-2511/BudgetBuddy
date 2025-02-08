@@ -9,7 +9,7 @@ const Form = ({Data,setData}) => {
     <div className='form-container'>
         <input 
         type='text'
-        placeholder='Salary title'
+        placeholder='Title'
         name='title'
         onChange={handleChange}
         value={Data.title}
@@ -17,7 +17,7 @@ const Form = ({Data,setData}) => {
         />
         <input 
         type='number'
-        placeholder='Salary Amount'
+        placeholder='Amount'
         name='amount'
         onChange={handleChange}
         value={Data.amount}
@@ -31,7 +31,7 @@ const Form = ({Data,setData}) => {
         value={Data.date}
         required
         />
-        <select className='income' onChange={handleChange} name='category' value={Data.category}>
+        {/* <select className='income' onChange={handleChange} name='category' value={Data.category}>
             <option value={"select option"} >Select Option</option>
             <option value={"Salary"} >Salary</option>
             <option value={"Freelancing"}>Freelancing</option>
@@ -41,10 +41,12 @@ const Form = ({Data,setData}) => {
             <option value={"Bank Transfer"}>Bank Transfer</option>
             <option value={"You Tube"}>You Tube</option>
             <option value={"Other"}>Other</option>
-        </select>
+        </select> */}
+        <input className='income' onChange={handleChange} name='category' value={Data.category} placeholder='Caterory' />
         <textarea
+        style={{ width: "275px", height: "50px",  resize: "none", paddingLeft: "0.3rem"}} 
         type=''
-        placeholder='Salary Description'
+        placeholder='Description'
         name='description'
         onChange={handleChange}
         value={Data.description}

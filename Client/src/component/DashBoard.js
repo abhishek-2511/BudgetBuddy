@@ -10,12 +10,12 @@ import { setExpense, setIncome, setTotal } from '../store/IncomeSlice'
 const DashBoard = () => {
 
   const dispatch = useDispatch();
-  const total = useSelector((state)=>state.manager.Total);
-  const income = useSelector((state)=>state.manager.Income);
-  const expense = useSelector((state)=>state.manager.Expense);
-  console.log(income,expense)
+  const total = useSelector((state) => state.manager.Total);
+  const income = useSelector((state) => state.manager.Income);
+  const expense = useSelector((state) => state.manager.Expense);
+  console.log(income, expense)
 
-  useEffect(()=>{
+  useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
     const fetchIncome = async () => {
       try {
@@ -42,11 +42,11 @@ const DashBoard = () => {
     };
 
     fetchExpense();
-  },[])
+  }, [])
 
   return (
     <div className='dashboard-container'>
-      <div className='dashboard-heading'> 
+      <div className='dashboard-heading'>
         <h2>DashBoard</h2>
       </div>
       <div className='dashboard-content'>
@@ -56,15 +56,16 @@ const DashBoard = () => {
         <div >
           <div className='total-card'>
             <h3>Total Income</h3>
-            <p>{rupee} {income}</p>
+            <p style={{ color: "green" }}>{rupee} {income}</p>
           </div >
           <div className='total-card'>
             <h3>Total Expense</h3>
-            <p>{rupee} {expense}</p>
+            <p style={{ color: "red" }}>{rupee} {expense}</p>
           </div>
           <div className='total-card'>
             <h3>Total Balance</h3>
-            <p>{rupee} {total}</p>
+            <p style={{ color: "#79adcc" }}>
+              {rupee} {total}</p>
           </div>
         </div>
       </div>

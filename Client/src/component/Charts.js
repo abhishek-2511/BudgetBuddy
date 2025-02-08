@@ -34,12 +34,12 @@ const Charts = () => {
         labels:incomes.map(value => value.date),
         datasets:[
             {
-                labels:"incomes",
+                label:"incomes",
                 data:incomes.map(value => value.amount),
                 borderColor: "green"
             },
             {
-                labels:"expenses",
+                label:"expenses",
                 data:expenses.map(value => value.amount),
                 borderColor: "red"
             }
